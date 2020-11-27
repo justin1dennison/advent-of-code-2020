@@ -13,7 +13,10 @@
 
 (def sum (partial apply +))
 
-(defn -main []
-  (let [combos (c/combinations input 2)
+(defn solver [n]
+  (let [combos (c/combinations input n)
         selected (first (filter #(= 2020 (sum %)) combos))]
-    (println {:result (apply * selected)})))
+    (apply * selected)))
+
+(defn -main []
+  (println {:result-part-one (solver 2) :result-part-two (solver 3)}))
