@@ -25,16 +25,3 @@
   (println {:part-one (solve grid [3 1])
             :part-two (->> slopes (map (partial solve grid)) multiply)}))
 
-;; playground
-(def example-grid (->> "./resources/example.txt" slurp str/split-lines))
-
-;;example with slopes
-;; (2, 7, 3, 4, 2)
-(map (partial solve example-grid) slopes)
-;;solution
-;;61
-;;257
-;;64
-;;47
-;;37
-;;1744787392
