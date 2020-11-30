@@ -29,13 +29,12 @@
                  :eyr #(Integer/parseInt %)
                  :hgt length-with-unit})
 
+
 (defn parse-passport [record]
   (->> record
        (split field-separator)
        (map (partial split attr-separator))
-       (map (fn [[k v]]
-              (let [transform (get transforms (keyword k) identity)]
-                [(keyword k) (transform v)])))
+       (map (fn [[k v]] [(keyword k) ((get transforms (keyword k) identity) v)]))
        (into {})))
 
 ;; validations
